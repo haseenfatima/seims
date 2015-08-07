@@ -2,20 +2,26 @@ $(function(){
 
   $('#link_accept_admissions').on('click', function(){
     
-    $('#student_applications, #denied_admissions').hide();
+    $('#student_applications, #denied_admissions, #waiting_fee_admissions').hide();
     $('#accept_admissions').show();
     
   });
 
   $('#link_student_applications').on('click', function(){
     
-    $('#accept_admissions, #denied_admissions').hide();
+    $('#accept_admissions, #denied_admissions, #waiting_fee_admissions').hide();
     $('#student_applications').show();
   });
 
   $('#link_denied_admissions').on('click', function(){
     
-    $('#accept_admissions, #student_applications').hide();
+    $('#accept_admissions, #student_applications, #waiting_fee_admissions').hide();
+    $('#denied_admissions').show();
+  });
+
+  $('#link_waiting_fee_admissions').on('click', function(){
+
+    $('#accept_admissions, #student_applications, #denied_admissions').hide();
     $('#denied_admissions').show();
   });
 
@@ -71,6 +77,8 @@ $(function(){
         var klass = "";
         if(user.payments.length > 1) {
           klass = ".accept_admissions_body";
+        } else if(typeof user.test_granted !== "undefined" && user.test_granted == "granted"){
+          klass = ".waiting_fee_admissions_body";
         } else if (typeof user.test_granted !== "undefined" && user.test_granted === "denied"){
           klass = ".denied_admissions_body";
         }else if (user.payments.length == 1){
