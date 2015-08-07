@@ -22,7 +22,7 @@ $(function(){
   $('#link_waiting_fee_admissions').on('click', function(){
 
     $('#accept_admissions, #student_applications, #denied_admissions').hide();
-    $('#denied_admissions').show();
+    $('#waiting_fee_admissions').show();
   });
 
   $('#link_student_applications').click();
